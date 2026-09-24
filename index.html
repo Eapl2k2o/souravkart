@@ -1,0 +1,725 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SouravKart - Online Shopping</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        /* Header */
+        header {
+            background: #2874f0;
+            padding: 12px 6%;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffe500;
+        }
+
+        .search {
+            flex: 1;
+            display: flex;
+            max-width: 650px;
+        }
+
+        .search input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .search button {
+            width: 55px;
+            border: none;
+            background: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .login {
+            background: white;
+            color: #2874f0;
+            padding: 10px 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .cart {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Categories */
+        .categories {
+            background: white;
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            padding: 18px;
+            box-shadow: 0 2px 5px #ddd;
+        }
+
+        .category {
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .category-icon {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        /* Hero */
+        .hero {
+            margin: 20px 6%;
+            min-height: 300px;
+            background: linear-gradient(120deg, #2874f0, #00bcd4);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 7%;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .hero-content h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .shop-btn {
+            padding: 13px 30px;
+            border: none;
+            background: #ffcc00;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .hero-icon {
+            font-size: 130px;
+        }
+
+        /* Section */
+        .section {
+            margin: 25px 6%;
+            background: white;
+            padding: 25px;
+            border-radius: 6px;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            font-size: 25px;
+        }
+
+        .view {
+            background: #2874f0;
+            color: white;
+            padding: 10px 18px;
+            text-decoration: none;
+        }
+
+        /* Products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .product {
+            border: 1px solid #eee;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+            background: white;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px #ddd;
+        }
+
+        .product-img {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            background: #f8f8f8;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .rating {
+            background: #388e3c;
+            color: white;
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            color: #777;
+            text-decoration: line-through;
+            margin-left: 5px;
+            font-size: 13px;
+        }
+
+        .discount {
+            color: #388e3c;
+            font-size: 13px;
+        }
+
+        /* Offer Banner */
+        .offer {
+            margin: 25px 6%;
+            padding: 35px;
+            background: #ffea00;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .offer h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .offer p {
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            background: #172337;
+            color: white;
+            padding: 45px 6%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        footer h3 {
+            color: #aaa;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #444;
+            margin-top: 30px;
+            padding-top: 20px;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .categories {
+                gap: 20px;
+                overflow-x: auto;
+            }
+
+            header {
+                flex-wrap: wrap;
+            }
+
+            .search {
+                order: 3;
+                flex-basis: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                text-align: center;
+                justify-content: center;
+            }
+
+            .hero-icon {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+
+        <div class="logo">
+            Sourav<span>Kart</span>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="Search for products, brands and more">
+            <button>🔍</button>
+        </div>
+
+        <div class="login">
+            Login
+        </div>
+
+        <div class="cart">
+            🛒 Cart
+        </div>
+
+    </header>
+
+
+    <!-- Categories -->
+
+    <div class="categories">
+
+        <div class="category">
+            <div class="category-icon">📱</div>
+            Mobiles
+        </div>
+
+        <div class="category">
+            <div class="category-icon">💻</div>
+            Electronics
+        </div>
+
+        <div class="category">
+            <div class="category-icon">👕</div>
+            Fashion
+        </div>
+
+        <div class="category">
+            <div class="category-icon">🏠</div>
+            Home
+        </div>
+
+        <div class="category">
+            <div class="category-icon">📚</div>
+            Books
+        </div>
+
+        <div class="category">
+            <div class="category-icon">🎮</div>
+            Gaming
+        </div>
+
+        <div class="category">
+            <div class="category-icon">⚽</div>
+            Sports
+        </div>
+
+    </div>
+
+
+    <!-- Hero Banner -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Big Shopping Sale</h1>
+
+            <p>
+                Discover amazing products at exciting prices.
+            </p>
+
+            <button class="shop-btn">
+                SHOP NOW
+            </button>
+
+        </div>
+
+        <div class="hero-icon">
+            🛍️
+        </div>
+
+    </section>
+
+
+    <!-- Products -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>Top Deals</h2>
+
+            <a href="#" class="view">
+                VIEW ALL
+            </a>
+
+        </div>
+
+
+        <div class="products">
+
+            <div class="product">
+
+                <div class="product-img">
+                    📱
+                </div>
+
+                <h3>Smartphone Pro</h3>
+
+                <span class="rating">
+                    4.5 ★
+                </span>
+
+                <p class="price">
+                    ₹14,999
+                    <span class="old-price">₹19,999</span>
+                </p>
+
+                <p class="discount">
+                    25% off
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    💻
+                </div>
+
+                <h3>Ultra Laptop</h3>
+
+                <span class="rating">
+                    4.4 ★
+                </span>
+
+                <p class="price">
+                    ₹49,999
+                    <span class="old-price">₹59,999</span>
+                </p>
+
+                <p class="discount">
+                    17% off
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    🎧
+                </div>
+
+                <h3>Wireless Headphones</h3>
+
+                <span class="rating">
+                    4.3 ★
+                </span>
+
+                <p class="price">
+                    ₹1,499
+                    <span class="old-price">₹2,499</span>
+                </p>
+
+                <p class="discount">
+                    40% off
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    ⌚
+                </div>
+
+                <h3>Smart Watch</h3>
+
+                <span class="rating">
+                    4.2 ★
+                </span>
+
+                <p class="price">
+                    ₹2,999
+                    <span class="old-price">₹4,999</span>
+                </p>
+
+                <p class="discount">
+                    40% off
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    👟
+                </div>
+
+                <h3>Sports Shoes</h3>
+
+                <span class="rating">
+                    4.6 ★
+                </span>
+
+                <p class="price">
+                    ₹1,999
+                    <span class="old-price">₹3,499</span>
+                </p>
+
+                <p class="discount">
+                    43% off
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Offer -->
+
+    <section class="offer">
+
+        <h2>🔥 Mega Weekend Offer</h2>
+
+        <p>
+            Get up to 70% OFF on selected products
+        </p>
+
+    </section>
+
+
+    <!-- More Products -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>Recommended For You</h2>
+
+            <a href="#" class="view">
+                VIEW ALL
+            </a>
+
+        </div>
+
+
+        <div class="products">
+
+            <div class="product">
+
+                <div class="product-img">
+                    📷
+                </div>
+
+                <h3>Digital Camera</h3>
+
+                <span class="rating">4.4 ★</span>
+
+                <p class="price">
+                    ₹29,999
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    🖥️
+                </div>
+
+                <h3>LED Monitor</h3>
+
+                <span class="rating">4.5 ★</span>
+
+                <p class="price">
+                    ₹12,999
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    🎮
+                </div>
+
+                <h3>Gaming Console</h3>
+
+                <span class="rating">4.7 ★</span>
+
+                <p class="price">
+                    ₹39,999
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    🎒
+                </div>
+
+                <h3>Travel Backpack</h3>
+
+                <span class="rating">4.3 ★</span>
+
+                <p class="price">
+                    ₹899
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    📚
+                </div>
+
+                <h3>Programming Books</h3>
+
+                <span class="rating">4.6 ★</span>
+
+                <p class="price">
+                    ₹699
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <h3>ABOUT SOURAVKART</h3>
+
+                <p>About Us</p>
+                <p>Contact Us</p>
+                <p>Careers</p>
+                <p>Corporate Information</p>
+            </div>
+
+
+            <div>
+                <h3>HELP</h3>
+
+                <p>Payments</p>
+                <p>Shipping</p>
+                <p>Cancellation</p>
+                <p>Returns</p>
+            </div>
+
+
+            <div>
+                <h3>CONSUMER POLICY</h3>
+
+                <p>Terms of Use</p>
+                <p>Privacy</p>
+                <p>Security</p>
+                <p>Refund Policy</p>
+            </div>
+
+
+            <div>
+                <h3>SOCIAL</h3>
+
+                <p>Facebook</p>
+                <p>Instagram</p>
+                <p>YouTube</p>
+                <p>Twitter</p>
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 SouravKart. All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
+
